@@ -25,3 +25,14 @@ for(y in nums){
     }
     console.log(`${y} = ${nums[y]}`);
 }
+
+// avoid using this structure:
+outer: // label
+for (a in nums) {
+    for (b in nums) {
+        if (a == 2 && b == 3) {
+            break outer;
+        }
+        console.log(`Pair = ${a}, ${b}`);
+    }
+}

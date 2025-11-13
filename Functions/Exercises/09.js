@@ -7,3 +7,24 @@
 // seja, que evite a reprovação do aluno. No caso de a nota ser 38, o arredondamento é possível pois atingirá 40 
 // e o aluno será aprovado.
 
+function gradesSystem(grade) {
+    if (grade < 38) {
+        return `Student grade: ${grade}. Result: Failed`;
+    }
+    
+    const nextMultipleOf5 = Math.ceil(grade / 5) * 5; // Calculate the next multiple of 5
+    const difference = nextMultipleOf5 - grade; // Calculate the difference 
+    
+    if (difference >= 3) { 
+        return `Student grade: ${grade}. Result: Passed`;
+    }
+
+    return `Student grade: ${nextMultipleOf5}. Result: Passed`;
+}
+
+// Test cases
+console.log(gradesSystem(84)); // Student grade: 85. Result: Passed
+console.log(gradesSystem(29)); // Student grade: 29. Result: Failed
+console.log(gradesSystem(38)); // Student grade: 40. Result: Passed
+console.log(gradesSystem(57)); // Student grade: 57. Result: Passed
+console.log(gradesSystem(73)); // Student grade: 75. Result: Passed

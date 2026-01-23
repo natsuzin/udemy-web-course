@@ -34,3 +34,15 @@ delete car.conductors
 delete car.calculateSafeValue
 console.log(car)
 console.log(car.conductors)
+
+/////
+
+const person = {name: 'John'}
+person.name = 'Peter'
+console.log(person)
+
+Object.freeze(person) // you cannot changue the value of the person variable
+
+person.name = 'Mary'
+console.log(person.name)
+

@@ -4,7 +4,10 @@ const port = 3003 // sempre que for executar uma aplicação com rede, é necess
 const express = require('express')
 const app = express()
 app.use(express.json())
+const bodyParser = require('body-parser')
 const database = require('./database')
+
+app.use(bodyParser.urlencoded({ extended: true })) 
 
 app.get('/products', (req, res, next) => {
     console.log('Middleware 1...')
@@ -24,6 +27,20 @@ app.post('/products', (req, res) => {
         name: req.body.name,
         price: req.body.price
     })
+    res.send(product)
+})
+
+app.put('/products/:id', (req, res) => {
+    const product = database.saveProduct({
+        id: req.params.id,
+        name: req.body.name,
+        price: req.body.price
+    })
+    res.send(product)
+})
+
+app.delete('/products/:id', (req, res, next) => {
+    const product = database.deleteProduct(req.params.id)
     res.send(product)
 })
 
